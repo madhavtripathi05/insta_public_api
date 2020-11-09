@@ -3,9 +3,7 @@
 Get Details of a Public Instagram Account just by entering it's username
 
 ## Currently Available Methods
-`getPostAt()`
-`getAllPosts()`
-`getAllPostsImages()`
-`getProfilePic()`
-`getFollowersList()`
-`getFollowingList()`
+`String getProfilePic()`
+`BasicInfo getBasicInfo()`
+`List<Post> getTimelinePosts()`
+`List<String> getTimelinePostsImages()`

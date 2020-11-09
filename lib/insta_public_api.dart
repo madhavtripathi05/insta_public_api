@@ -1,18 +1,67 @@
-// You have generated a new plugin project without
-// specifying the `--platforms` flag. A plugin project supports no platforms is generated.
-// To add platforms, run `flutter create -t plugin --platforms <platforms> .` under the same
-// directory. You can also find a detailed instruction on how to add platforms in the `pubspec.yaml` at https://flutter.dev/docs/development/packages-and-plugins/developing-packages#plugin-platforms.
+import 'dart:html';
 
-import 'dart:async';
-
-import 'package:flutter/services.dart';
+import 'models/basic_model.dart';
+import 'models/response_model.dart' hide Dimensions;
 
 class InstaPublicApi {
-  static const MethodChannel _channel =
-      const MethodChannel('insta_public_api');
+  final String username;
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
+  InstaPublicApi(this.username);
+
+  Future<String> fetchResponse() async {
+    final url = "https://www.instagram.com/$username/?__a=1";
+    return await HttpRequest.getString(url);
+  }
+
+  Future<List<String>> getTimelinePostsImages() async {
+    final json = await fetchResponse();
+    return instaApiFromJson(json)
+        .graphql
+        .user
+        .edgeOwnerToTimelineMedia
+        .edges
+        .map((e) => e.node.displayUrl)
+        .toList();
+  }
+
+  Future<String> getProfilePic() async {
+    final json = await fetchResponse();
+    return instaApiFromJson(json).graphql.user.profilePicUrlHd;
+  }
+
+  Future<BasicInfo> getBasicInfo() async {
+    final json = await fetchResponse();
+    var user = instaApiFromJson(json).graphql.user;
+    return BasicInfo(
+      isPrivate: user.isPrivate,
+      isVerified: user.isVerified,
+      profilePic: user.profilePicUrlHd,
+      noOfPosts: user.edgeOwnerToTimelineMedia.count,
+      followers: user.edgeFollowedBy.count,
+      following: user.edgeFollow.count,
+      fullName: user.fullName,
+      bio: user.biography,
+    );
+  }
+
+  Future<List<Post>> getTimelinePosts() async {
+    final json = await fetchResponse();
+    var edges =
+        instaApiFromJson(json).graphql.user.edgeOwnerToTimelineMedia.edges;
+    return edges
+        .map((e) => Post(
+            comments: e.node.edgeMediaToComment.count,
+            likes: e.node.edgeLikedBy.count,
+            dimensions: e.node.dimensions,
+            isVideo: e.node.isVideo,
+            images: e.node.edgeSidecarToChildren.edges
+                .map((e) => Image(
+                    id: e.node.id,
+                    isVideo: e.node.isVideo,
+                    dimensions: e.node.dimensions,
+                    displayUrl: e.node.displayUrl,
+                    accessibilityCaption: e.node.accessibilityCaption))
+                .toList()))
+        .toList();
   }
 }
