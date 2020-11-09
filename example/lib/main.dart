@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           leading: FutureBuilder(
@@ -29,15 +30,37 @@ class MyApp extends StatelessWidget {
               (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
             if (!snapshot.hasData)
               return Center(child: CircularProgressIndicator());
-            List<String> images = snapshot.data;
-
+            List<String> posts = snapshot.data;
+            print(posts);
             return ListView(
-                children: images
-                    .map((i) => Container(
+                children: posts
+                    .map((p) => Container(
                           padding: EdgeInsets.all(20),
-                          child: ClipRRect(
-                            child: Image.network(i),
-                            borderRadius: BorderRadius.circular(10),
+                          child: Column(
+                            // scrollDirection: Axis.horizontal,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(vertical: 10),
+                                child: ClipRRect(
+                                  child: Image.network(p),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              // ...p.images
+                              //     .map(
+                              //       (i) => Container(
+                              //         padding:
+                              //             EdgeInsets.symmetric(vertical: 10),
+                              //         child: ClipRRect(
+                              //           child: i.isVideo
+                              //               ? Container()
+                              //               : Image.network(i.displayUrl),
+                              //           borderRadius: BorderRadius.circular(10),
+                              //         ),
+                              //       ),
+                              //     )
+                              //     .toList(),
+                            ],
                           ),
                         ))
                     .toList());

@@ -68,7 +68,7 @@ class Post {
   bool isVideo;
   int likes;
   int comments;
-  List<Image> images;
+  List<Img> images;
 
   factory Post.fromJson(Map<String, dynamic> json) => Post(
         dimensions: Dimensions.fromJson(json["dimensions"]),
@@ -76,7 +76,7 @@ class Post {
         isVideo: json["isVideo"],
         likes: json["likes"],
         comments: json["comments"],
-        images: List<Image>.from(json["images"].map((x) => Image.fromJson(x))),
+        images: List<Img>.from(json["images"].map((x) => Img.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -89,8 +89,8 @@ class Post {
       };
 }
 
-class Image {
-  Image({
+class Img {
+  Img({
     this.id,
     this.dimensions,
     this.displayUrl,
@@ -104,7 +104,7 @@ class Image {
   bool isVideo;
   String accessibilityCaption;
 
-  factory Image.fromJson(Map<String, dynamic> json) => Image(
+  factory Img.fromJson(Map<String, dynamic> json) => Img(
         id: json["id"],
         dimensions: Dimensions.fromJson(json["dimensions"]),
         displayUrl: json["display_url"],

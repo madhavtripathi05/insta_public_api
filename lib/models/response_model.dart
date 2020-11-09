@@ -108,7 +108,7 @@ class GraphqlUser {
 
   String biography;
   bool blockedByViewer;
-  dynamic businessEmail;
+  String businessEmail;
   dynamic restrictedByViewer;
   bool countryBlock;
   String externalUrl;
@@ -128,9 +128,9 @@ class GraphqlUser {
   String id;
   bool isBusinessAccount;
   bool isJoinedRecently;
-  dynamic businessCategoryName;
+  String businessCategoryName;
   dynamic overallCategoryName;
-  dynamic categoryEnum;
+  String categoryEnum;
   bool isPrivate;
   bool isVerified;
   EdgeMutualFollowedBy edgeMutualFollowedBy;
@@ -306,7 +306,7 @@ class PurpleNode {
     this.edgeSidecarToChildren,
   });
 
-  PurpleTypename typename;
+  String typename;
   String id;
   String shortcode;
   Dimensions dimensions;
@@ -317,7 +317,7 @@ class PurpleNode {
   dynamic gatingInfo;
   SharingFrictionInfo sharingFrictionInfo;
   dynamic mediaOverlayInfo;
-  dynamic mediaPreview;
+  String mediaPreview;
   Owner owner;
   bool isVideo;
   String accessibilityCaption;
@@ -333,7 +333,7 @@ class PurpleNode {
   EdgeSidecarToChildren edgeSidecarToChildren;
 
   factory PurpleNode.fromJson(Map<String, dynamic> json) => PurpleNode(
-        typename: purpleTypenameValues.map[json["__typename"]],
+        typename: json["__typename"],
         id: json["id"],
         shortcode: json["shortcode"],
         dimensions: Dimensions.fromJson(json["dimensions"]),
@@ -346,7 +346,8 @@ class PurpleNode {
         sharingFrictionInfo:
             SharingFrictionInfo.fromJson(json["sharing_friction_info"]),
         mediaOverlayInfo: json["media_overlay_info"],
-        mediaPreview: json["media_preview"],
+        mediaPreview:
+            json["media_preview"] == null ? null : json["media_preview"],
         owner: Owner.fromJson(json["owner"]),
         isVideo: json["is_video"],
         accessibilityCaption: json["accessibility_caption"],
@@ -364,12 +365,13 @@ class PurpleNode {
         thumbnailResources: List<ThumbnailResource>.from(
             json["thumbnail_resources"]
                 .map((x) => ThumbnailResource.fromJson(x))),
-        edgeSidecarToChildren:
-            EdgeSidecarToChildren.fromJson(json["edge_sidecar_to_children"]),
+        edgeSidecarToChildren: json["edge_sidecar_to_children"] == null
+            ? null
+            : EdgeSidecarToChildren.fromJson(json["edge_sidecar_to_children"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "__typename": purpleTypenameValues.reverse[typename],
+        "__typename": typename,
         "id": id,
         "shortcode": shortcode,
         "dimensions": dimensions.toJson(),
@@ -380,7 +382,7 @@ class PurpleNode {
         "gating_info": gatingInfo,
         "sharing_friction_info": sharingFrictionInfo.toJson(),
         "media_overlay_info": mediaOverlayInfo,
-        "media_preview": mediaPreview,
+        "media_preview": mediaPreview == null ? null : mediaPreview,
         "owner": owner.toJson(),
         "is_video": isVideo,
         "accessibility_caption": accessibilityCaption,
@@ -394,7 +396,9 @@ class PurpleNode {
         "thumbnail_src": thumbnailSrc,
         "thumbnail_resources":
             List<dynamic>.from(thumbnailResources.map((x) => x.toJson())),
-        "edge_sidecar_to_children": edgeSidecarToChildren.toJson(),
+        "edge_sidecar_to_children": edgeSidecarToChildren == null
+            ? null
+            : edgeSidecarToChildren.toJson(),
       };
 }
 
@@ -636,7 +640,7 @@ class StickyNode {
     this.videoViewCount,
   });
 
-  FluffyTypename typename;
+  Typename typename;
   String id;
   String shortcode;
   Dimensions dimensions;
@@ -658,7 +662,7 @@ class StickyNode {
   int videoViewCount;
 
   factory StickyNode.fromJson(Map<String, dynamic> json) => StickyNode(
-        typename: fluffyTypenameValues.map[json["__typename"]],
+        typename: typenameValues.map[json["__typename"]],
         id: json["id"],
         shortcode: json["shortcode"],
         dimensions: Dimensions.fromJson(json["dimensions"]),
@@ -671,13 +675,10 @@ class StickyNode {
         sharingFrictionInfo:
             SharingFrictionInfo.fromJson(json["sharing_friction_info"]),
         mediaOverlayInfo: json["media_overlay_info"],
-        mediaPreview:
-            json["media_preview"] == null ? null : json["media_preview"],
+        mediaPreview: json["media_preview"],
         owner: Owner.fromJson(json["owner"]),
         isVideo: json["is_video"],
-        accessibilityCaption: json["accessibility_caption"] == null
-            ? null
-            : json["accessibility_caption"],
+        accessibilityCaption: json["accessibility_caption"],
         dashInfo: json["dash_info"] == null
             ? null
             : DashInfo.fromJson(json["dash_info"]),
@@ -690,7 +691,7 @@ class StickyNode {
       );
 
   Map<String, dynamic> toJson() => {
-        "__typename": fluffyTypenameValues.reverse[typename],
+        "__typename": typenameValues.reverse[typename],
         "id": id,
         "shortcode": shortcode,
         "dimensions": dimensions.toJson(),
@@ -701,11 +702,10 @@ class StickyNode {
         "gating_info": gatingInfo,
         "sharing_friction_info": sharingFrictionInfo.toJson(),
         "media_overlay_info": mediaOverlayInfo,
-        "media_preview": mediaPreview == null ? null : mediaPreview,
+        "media_preview": mediaPreview,
         "owner": owner.toJson(),
         "is_video": isVideo,
-        "accessibility_caption":
-            accessibilityCaption == null ? null : accessibilityCaption,
+        "accessibility_caption": accessibilityCaption,
         "dash_info": dashInfo == null ? null : dashInfo.toJson(),
         "has_audio": hasAudio == null ? null : hasAudio,
         "tracking_token": trackingToken == null ? null : trackingToken,
@@ -758,9 +758,9 @@ class Owner {
       };
 }
 
-enum Username { FLUTTER_CODERS }
+enum Username { FEED_THE_STRAY }
 
-final usernameValues = EnumValues({"flutter_coders": Username.FLUTTER_CODERS});
+final usernameValues = EnumValues({"feed.the.stray": Username.FEED_THE_STRAY});
 
 class SharingFrictionInfo {
   SharingFrictionInfo({
@@ -783,12 +783,10 @@ class SharingFrictionInfo {
       };
 }
 
-enum FluffyTypename { GRAPH_IMAGE, GRAPH_VIDEO }
+enum Typename { GRAPH_IMAGE, GRAPH_VIDEO }
 
-final fluffyTypenameValues = EnumValues({
-  "GraphImage": FluffyTypename.GRAPH_IMAGE,
-  "GraphVideo": FluffyTypename.GRAPH_VIDEO
-});
+final typenameValues = EnumValues(
+    {"GraphImage": Typename.GRAPH_IMAGE, "GraphVideo": Typename.GRAPH_VIDEO});
 
 class ThumbnailResource {
   ThumbnailResource({
@@ -815,11 +813,6 @@ class ThumbnailResource {
       };
 }
 
-enum PurpleTypename { GRAPH_SIDECAR }
-
-final purpleTypenameValues =
-    EnumValues({"GraphSidecar": PurpleTypename.GRAPH_SIDECAR});
-
 class PageInfo {
   PageInfo({
     this.hasNextPage,
@@ -827,16 +820,16 @@ class PageInfo {
   });
 
   bool hasNextPage;
-  String endCursor;
+  dynamic endCursor;
 
   factory PageInfo.fromJson(Map<String, dynamic> json) => PageInfo(
         hasNextPage: json["has_next_page"],
-        endCursor: json["end_cursor"] == null ? null : json["end_cursor"],
+        endCursor: json["end_cursor"],
       );
 
   Map<String, dynamic> toJson() => {
         "has_next_page": hasNextPage,
-        "end_cursor": endCursor == null ? null : endCursor,
+        "end_cursor": endCursor,
       };
 }
 

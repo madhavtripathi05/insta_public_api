@@ -1,8 +1,7 @@
 name: insta_public_api
-description: A new flutter plugin project.
+description: A plugin for getting Instagram Details of a public user.
 version: 0.0.1
-author: Madhav Tripathi
-homepage: "madhav-tripathi.web.app"
+homepage: "https://madhav-tripathi.web.app"
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -11,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: ^0.12.2
 
 dev_dependencies:
   flutter_test:
