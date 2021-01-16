@@ -7,7 +7,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   /// Initialize with your username
-  final ipa = InstaPublicApi('nikkkhil', postsLimit: 105);
+  final ipa = InstaPublicApi('flutter_coders', postsLimit: 105);
 
   /// Helper function
   Widget makeText(String text) => Padding(
