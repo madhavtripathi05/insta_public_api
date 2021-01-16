@@ -7,7 +7,7 @@ void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   /// Initialize with your username
-  final ipa = InstaPublicApi('flutter_coders');
+  final ipa = InstaPublicApi('nikkkhil', postsLimit: 105);
 
   /// Helper function
   Widget makeText(String text) => Padding(
@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
           title: const Text('Example App'),
         ),
         body: FutureBuilder(
-          /// Get Timeline post urls
-          future: ipa.getTimelinePosts(),
+          /// Get All post urls
+          future: ipa.getAllPosts(),
           builder: (BuildContext context, AsyncSnapshot<List<Post>> snapshot) {
             /// Wait Until data loads
             if (!snapshot.hasData)

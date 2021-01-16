@@ -1,8 +1,8 @@
 name: insta_public_api
-version: 0.0.1
+version: 0.1.0
 description: A plugin for getting Instagram Details of a public user. Just Pass
-  username inside InstaPublicApi class and get the necessary details.
-homepage: "https://madhav-tripathi.web.app"
+  username inside InstaPublicApi class and get the required details.
+homepage: "https://github.com/madhavtripathi05/insta_public_api"
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -21,7 +21,6 @@ dev_dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter.
 flutter: null
-
 # This section identifies this Flutter project as a plugin project.
 # The 'pluginClass' and Android 'package' identifiers should not ordinarily
 # be modified. They are used by the tooling to maintain consistency when
