@@ -13,14 +13,14 @@ class BasicInfo {
     this.bio,
   });
 
-  bool isPrivate;
-  bool isVerified;
-  String profilePic;
-  int followers;
-  int following;
-  String fullName;
-  int noOfPosts;
-  String bio;
+  bool? isPrivate;
+  bool? isVerified;
+  String? profilePic;
+  int? followers;
+  int? following;
+  String? fullName;
+  int? noOfPosts;
+  String? bio;
 }
 
 /// [Post]
@@ -36,14 +36,14 @@ class Post {
     this.images,
   });
 
-  Dimensions dimensions;
-  String displayUrl;
-  bool isVideo;
-  int likes;
-  bool hasNestedImages;
-  String caption;
-  int comments;
-  List<Img> images;
+  Dimensions? dimensions;
+  String? displayUrl;
+  bool? isVideo;
+  int? likes;
+  bool? hasNestedImages;
+  String? caption;
+  int? comments;
+  List<Img>? images;
 }
 
 /// [Img]
@@ -56,9 +56,9 @@ class Img {
     this.accessibilityCaption,
   });
 
-  String id;
-  Dimensions dimensions;
-  String displayUrl;
-  bool isVideo;
-  String accessibilityCaption;
+  String? id;
+  Dimensions? dimensions;
+  String? displayUrl;
+  bool? isVideo;
+  String? accessibilityCaption;
 }

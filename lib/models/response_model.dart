@@ -7,7 +7,7 @@ class InstaApi {
     this.graphql,
   });
 
-  Graphql graphql;
+  Graphql? graphql;
 
   factory InstaApi.fromJson(Map<String, dynamic> json) => InstaApi(
         graphql:
@@ -20,7 +20,7 @@ class Graphql {
     this.user,
   });
 
-  User user;
+  User? user;
 
   factory Graphql.fromJson(Map<String, dynamic> json) => Graphql(
         user: json["user"] == null ? null : User.fromJson(json["user"]),
@@ -48,23 +48,23 @@ class User {
     this.edgeOwnerToTimelineMedia,
   });
 
-  String biography;
-  String externalUrl;
-  String externalUrlLinkshimmed;
-  Edge edgeFollowedBy;
-  bool followedByViewer;
-  Edge edgeFollow;
-  String fullName;
-  String id;
-  bool isBusinessAccount;
-  bool isJoinedRecently;
-  bool isPrivate;
-  bool isVerified;
-  String profilePicUrl;
-  String profilePicUrlHd;
-  bool requestedByViewer;
-  String username;
-  EdgeOwnerToTimelineMedia edgeOwnerToTimelineMedia;
+  String? biography;
+  String? externalUrl;
+  String? externalUrlLinkshimmed;
+  Edge? edgeFollowedBy;
+  bool? followedByViewer;
+  Edge? edgeFollow;
+  String? fullName;
+  String? id;
+  bool? isBusinessAccount;
+  bool? isJoinedRecently;
+  bool? isPrivate;
+  bool? isVerified;
+  String? profilePicUrl;
+  String? profilePicUrlHd;
+  bool? requestedByViewer;
+  String? username;
+  EdgeOwnerToTimelineMedia? edgeOwnerToTimelineMedia;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         biography: json["biography"] == null ? null : json["biography"],
@@ -112,7 +112,7 @@ class Edge {
     this.count,
   });
 
-  int count;
+  int? count;
 
   factory Edge.fromJson(Map<String, dynamic> json) => Edge(
         count: json["count"] == null ? null : json["count"],
@@ -126,9 +126,9 @@ class EdgeOwnerToTimelineMedia {
     this.edges,
   });
 
-  int count;
-  PageInfo pageInfo;
-  List<EdgeOwnerToTimelineMediaEdge> edges;
+  int? count;
+  PageInfo? pageInfo;
+  List<EdgeOwnerToTimelineMediaEdge>? edges;
 
   factory EdgeOwnerToTimelineMedia.fromJson(Map<String, dynamic> json) =>
       EdgeOwnerToTimelineMedia(
@@ -148,7 +148,7 @@ class EdgeOwnerToTimelineMediaEdge {
     this.node,
   });
 
-  PurpleNode node;
+  PurpleNode? node;
 
   factory EdgeOwnerToTimelineMediaEdge.fromJson(Map<String, dynamic> json) =>
       EdgeOwnerToTimelineMediaEdge(
@@ -175,21 +175,21 @@ class PurpleNode {
     this.edgeSidecarToChildren,
   });
 
-  String typename;
-  String id;
-  String shortcode;
-  Dimensions dimensions;
-  String displayUrl;
-  Owner owner;
-  bool isVideo;
-  String accessibilityCaption;
-  EdgeMediaToCaption edgeMediaToCaption;
-  Edge edgeMediaToComment;
-  bool commentsDisabled;
-  int takenAtTimestamp;
-  Edge edgeLikedBy;
-  Edge edgeMediaPreviewLike;
-  EdgeSidecarToChildren edgeSidecarToChildren;
+  String? typename;
+  String? id;
+  String? shortcode;
+  Dimensions? dimensions;
+  String? displayUrl;
+  Owner? owner;
+  bool? isVideo;
+  String? accessibilityCaption;
+  EdgeMediaToCaption? edgeMediaToCaption;
+  Edge? edgeMediaToComment;
+  bool? commentsDisabled;
+  int? takenAtTimestamp;
+  Edge? edgeLikedBy;
+  Edge? edgeMediaPreviewLike;
+  EdgeSidecarToChildren? edgeSidecarToChildren;
 
   factory PurpleNode.fromJson(Map<String, dynamic> json) => PurpleNode(
         typename: json["__typename"] == null ? null : json["__typename"],
@@ -234,8 +234,8 @@ class Dimensions {
     this.width,
   });
 
-  int height;
-  int width;
+  int? height;
+  int? width;
 
   factory Dimensions.fromJson(Map<String, dynamic> json) => Dimensions(
         height: json["height"] == null ? null : json["height"],
@@ -248,7 +248,7 @@ class EdgeMediaToCaption {
     this.edges,
   });
 
-  List<EdgeMediaToCaptionEdge> edges;
+  List<EdgeMediaToCaptionEdge>? edges;
 
   factory EdgeMediaToCaption.fromJson(Map<String, dynamic> json) =>
       EdgeMediaToCaption(
@@ -264,7 +264,7 @@ class EdgeMediaToCaptionEdge {
     this.node,
   });
 
-  FluffyNode node;
+  FluffyNode? node;
 
   factory EdgeMediaToCaptionEdge.fromJson(Map<String, dynamic> json) =>
       EdgeMediaToCaptionEdge(
@@ -277,7 +277,7 @@ class FluffyNode {
     this.text,
   });
 
-  String text;
+  String? text;
 
   factory FluffyNode.fromJson(Map<String, dynamic> json) => FluffyNode(
         text: json["text"] == null ? null : json["text"],
@@ -289,7 +289,7 @@ class EdgeSidecarToChildren {
     this.edges,
   });
 
-  List<EdgeSidecarToChildrenEdge> edges;
+  List<EdgeSidecarToChildrenEdge>? edges;
 
   factory EdgeSidecarToChildren.fromJson(Map<String, dynamic> json) =>
       EdgeSidecarToChildren(
@@ -305,7 +305,7 @@ class EdgeSidecarToChildrenEdge {
     this.node,
   });
 
-  TentacledNode node;
+  TentacledNode? node;
 
   factory EdgeSidecarToChildrenEdge.fromJson(Map<String, dynamic> json) =>
       EdgeSidecarToChildrenEdge(
@@ -327,15 +327,15 @@ class TentacledNode {
     this.accessibilityCaption,
   });
 
-  String typename;
-  String id;
-  String shortcode;
-  Dimensions dimensions;
-  String displayUrl;
-  String mediaPreview;
-  Owner owner;
-  bool isVideo;
-  String accessibilityCaption;
+  String? typename;
+  String? id;
+  String? shortcode;
+  Dimensions? dimensions;
+  String? displayUrl;
+  String? mediaPreview;
+  Owner? owner;
+  bool? isVideo;
+  String? accessibilityCaption;
 
   factory TentacledNode.fromJson(Map<String, dynamic> json) => TentacledNode(
         typename: json["__typename"] == null ? null : json["__typename"],
@@ -361,8 +361,8 @@ class Owner {
     this.username,
   });
 
-  String id;
-  String username;
+  String? id;
+  String? username;
 
   factory Owner.fromJson(Map<String, dynamic> json) => Owner(
         id: json["id"] == null ? null : json["id"],
@@ -376,8 +376,8 @@ class PageInfo {
     this.endCursor,
   });
 
-  bool hasNextPage;
-  String endCursor;
+  bool? hasNextPage;
+  String? endCursor;
 
   factory PageInfo.fromJson(Map<String, dynamic> json) => PageInfo(
         hasNextPage:

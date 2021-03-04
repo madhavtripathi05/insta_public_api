@@ -1,3 +1,5 @@
+## [0.1.1]
+- Migrated to Null Safety
 ## [0.1.0]
 - Added `getAllPosts()` and works as Expected.
 - Added Exceptions wherever required.

@@ -14,8 +14,8 @@ class NextResponse {
     this.status,
   });
 
-  Data data;
-  String status;
+  Data? data;
+  String? status;
 
   factory NextResponse.fromJson(Map<String, dynamic> json) => NextResponse(
         data: Data.fromJson(json["data"]),
@@ -28,7 +28,7 @@ class Data {
     this.user,
   });
 
-  User user;
+  User? user;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
         user: User.fromJson(json["user"]),
@@ -40,7 +40,7 @@ class User {
     this.edgeOwnerToTimelineMedia,
   });
 
-  EdgeOwnerToTimelineMedia edgeOwnerToTimelineMedia;
+  EdgeOwnerToTimelineMedia? edgeOwnerToTimelineMedia;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
         edgeOwnerToTimelineMedia: EdgeOwnerToTimelineMedia.fromJson(
