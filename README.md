@@ -1,6 +1,6 @@
-# Insta Public Api
+# Insta Public API
 
-Get Details of a Public Instagram Account just by entering it's username
+Fetch details of a public Instagram account just by entering their username
 ```dart
 // Import the package
 import 'package:insta_public_api/insta_public_api.dart';

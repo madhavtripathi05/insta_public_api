@@ -1,3 +1,5 @@
+## [0.1.2]
+- Updated http version and some minor changes
 ## [0.1.1]
 - Migrated to Null Safety
 ## [0.1.0]

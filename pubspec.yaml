@@ -1,5 +1,5 @@
 name: insta_public_api
-version: 0.1.1
+version: 0.1.2
 description: A plugin for getting Instagram Details of a public user. Just Pass
   username inside InstaPublicApi class and get the required details.
 homepage: 'https://github.com/madhavtripathi05/insta_public_api'
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  http: 0.13.0
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:

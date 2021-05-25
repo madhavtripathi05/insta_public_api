@@ -6,7 +6,7 @@ import 'models/basic_model.dart';
 import 'models/next_response_model.dart';
 import 'models/response_model.dart';
 
-// Root Class
+///[Create a constructor by passing username]
 class InstaPublicApi {
   final String username;
   //! Override this limit at your own risk
@@ -25,7 +25,7 @@ class InstaPublicApi {
       throw Exception(
           'HTML was returned instead of JSON\ni.e.You might have surpassed Instagram\'s no. of requests/hour limit');
     }
-    print(body);
+    // print(body);
     return body;
   }
 
@@ -38,6 +38,7 @@ class InstaPublicApi {
     return body;
   }
 
+  /// Checks if the account is private
   void checkPrivate(bool isPrivate) {
     if (isPrivate) {
       log('Private account!\nPlease enter username of a public account!',

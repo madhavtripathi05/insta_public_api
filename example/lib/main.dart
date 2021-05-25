@@ -96,11 +96,13 @@ class MyApp extends StatelessWidget {
                                                               .images.first ==
                                                           i
                                                       ? BorderRadius.only(
-                                                          topLeft: Radius
-                                                              .circular(10),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10),
                                                           bottomLeft:
                                                               Radius.circular(
-                                                                  10))
+                                                                  10),
+                                                        )
                                                       : p.images.last == i
                                                           ? BorderRadius.only(
                                                               topRight: Radius
@@ -108,7 +110,8 @@ class MyApp extends StatelessWidget {
                                                               bottomRight:
                                                                   Radius
                                                                       .circular(
-                                                                          10))
+                                                                          10),
+                                                            )
                                                           : BorderRadius.all(
                                                               Radius.zero),
                                                 ),
